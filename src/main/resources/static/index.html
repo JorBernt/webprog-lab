@@ -3,42 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script>
-        function klikk() {
-            const valgtFilm = document.getElementById("filmValg").value
-            const array = []
-            array.push(valgtFilm)
-            console.log(array)
-            slettElement(array, valgtFilm)
-            console.log(array)
-        }
-
-        function slettElement(array, elementet) {
-            const index = array.indexOf(elementet)
-            if(index !== -1) {
-                array.splice(index, 1)
-            }
-        }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-<div>
-    <label for="filmValg">Velg film</label>
+<button onclick="lastInn()">Last inn</button>
 
-    <select name="Filmer" id="filmValg">
-        <option value="Star Wars">Star Wars</option>
-        <option value="Matrix">Matrix</option>
-        <option value="Harry Potter">Harry Potter</option>
-    </select>
+<script>
 
-    <div id="valgtFilm"></div>
+    function lastInn() {
+        $.get("/lastInn",function (){
+            window.location.href = "kalkulator.html"
 
-    <input type="text" id="input">
-    <button id="ok" onclick="klikk()">ok</button>
-    <span id="feilmelding" style="color:red"></span>
+        })
+    }
 
-</div>
+</script>
 
 </body>
 </html>
